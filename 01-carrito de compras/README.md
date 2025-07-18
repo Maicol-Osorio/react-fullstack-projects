@@ -1,12 +1,48 @@
-# React + Vite
+# ⚡ Tienda de Guitarras | React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna desarrollada con **React** y **Vite** que simula una tienda virtual de guitarras. Construida como parte de un aprendizaje intensivo sobre React moderno: componentes, hooks, estado, efectos, persistencia y optimización del rendimiento.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías
 
-## Expanding the ESLint configuration
+- ⚛️ React (con JSX y Hooks)
+- ⚡ Vite (build ultra rápido)
+- 🎨 CSS moderno
+- 🧠 useState, useEffect, useMemo
+- 🛍️ LocalStorage (carrito persistente)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📚 Funcionalidades Principales
+
+- ✅ Interfaz modular con componentes reutilizables
+- ✅ Carrito de compras interactivo
+- ✅ Añadir, incrementar, eliminar y vaciar productos
+- ✅ Cálculo automático del total a pagar
+- ✅ Persistencia con LocalStorage
+- ✅ Optimización de rendimiento con `useMemo`
+
+---
+
+## 🧱 Estructura del Proyecto
+
+```bash
+src/
+│
+├── components/    # Componentes (Guitar, Header)
+├── data/          # Datos estáticos (JSON)
+├── index.css/        # Estilos globales o modulares
+├── App.jsx        # Componente raíz
+└── main.jsx       # Punto de entrada de React
+
+# 🔁 Clona el repositorio
+git clone https://github.com/Maicol-Osorio/react-fullstack-projects.git
+cd 01-carrito de compras
+
+# 📦 Instala las dependencias
+npm install
+
+# 💻 Inicia la aplicación en modo desarrollo
+npm run dev
+
