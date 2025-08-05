@@ -4,7 +4,8 @@ import type { TMenu, TMenuData } from "../types"
 export const useOrder = () => {
 
     const [order, setOrder] = useState<TMenu[]>([])
-    const isEmpty = useMemo(()=> order.length, [order])
+    const [tip, setTip] = useState<number>(0)
+    const isEmpty = useMemo(()=> order.length > 0, [order])
 
 
     const addItem = (item: TMenuData) => {
@@ -33,10 +34,18 @@ export const useOrder = () => {
         setOrder(order.filter(orden=> orden.id !== id))
     }
 
+    const clearOrder = ()=>{
+        setOrder([])
+        setTip(0)
+    }
+
     return {
         order,
+        tip,
+        setTip,
         isEmpty,
         addItem,
-        removeItem
+        removeItem,
+        clearOrder
     }
 }

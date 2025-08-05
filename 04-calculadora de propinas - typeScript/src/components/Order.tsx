@@ -1,4 +1,4 @@
-import type { TMenu, TMenuData } from "../types"
+import type { TMenu } from "../types"
 import { formatCurrency } from "../helpers/copCurrency"
 
 type OrderProps = {
