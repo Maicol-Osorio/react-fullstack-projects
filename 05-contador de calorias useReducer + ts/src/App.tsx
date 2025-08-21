@@ -1,6 +1,7 @@
 import Form from "./components/Form"
 import { useReducer } from "react"
 import { activityReducer, initialState } from "./Reducer/activity-reducer"
+import ActivityList from "./components/ActivityList"
 
 function App() {
 
@@ -13,12 +14,16 @@ function App() {
         <button className="ring-1 px-3 py-1 capitalize rounded-md hover:shadow-md hover:shadow-black hover:bg-blue-400 hover:text-white duration-300">reiniciar</button>
       </header>
 
-      <section className="bg-blue-400/25 p-3 flex justify-center flex-col justify-center items-center">
+      <section className="p-3 flex justify-center flex-col justify-center items-center">
         <Form
           dispatch={dispatch}
         />
+      </section>
 
-        <div>hol</div>
+      <section className="flex justify-center mt-4 flex-col items-center">
+        <ActivityList
+          state={state.activities}
+        />
       </section>
     </>
   )
