@@ -1,7 +1,8 @@
-export type DataT = {
+export type categoriesT = {
     id: number,
     name: string
 }
+
 
 export type ActivityT = {
     id: string
