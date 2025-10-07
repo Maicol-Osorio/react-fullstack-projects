@@ -1,16 +1,17 @@
-import { useState, type Dispatch } from "react"
-import {v4 as uuidva} from "uuid"
+import { useEffect, useState, type Dispatch } from "react"
+import { v4 as uuidva } from "uuid"
 import { categories } from "../data/data"
 import type { ActivityT } from "../types"
-import type { activityActions } from "../reducers/activity-reducer"
+import type { ActivitiState, activityActions } from "../reducers/activity-reducer"
 
 type FormProps = {
     dispatch: Dispatch<activityActions>
+    state: ActivitiState
 }
 
-const Form = ({ dispatch }: FormProps) => {
+const Form = ({ dispatch, state }: FormProps) => {
 
-    const initialActivity : ActivityT = {
+    const initialActivity: ActivityT = {
         id: uuidva(),
         categories: 1,
         name: "",
@@ -18,6 +19,8 @@ const Form = ({ dispatch }: FormProps) => {
     }
 
     const [activity, setActivity] = useState<ActivityT>(initialActivity)
+
+
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 
@@ -29,6 +32,14 @@ const Form = ({ dispatch }: FormProps) => {
         })
     }
 
+    useEffect(() => {
+        if (state.activitiEdit) {
+            const updateActiviti = state.activities.filter(item => item.id === state.activitiEdit)[0]
+            setActivity(updateActiviti)
+
+        }
+
+    }, [state.activitiEdit])
     const isValid = () => {
         const { name, calories } = activity
         return calories > 0 && name.trim() !== ""
@@ -45,7 +56,7 @@ const Form = ({ dispatch }: FormProps) => {
 
 
     return (
-        <form className="w-4/6 ring-1 shadow-md shadow-black/50 p-5 rounded-md space-y-3">
+        <form className="md:w-4/6 w-5/6 ring-1 shadow-md shadow-black/50 p-5 rounded-md space-y-3">
             <div className="flex flex-col space-y-1">
                 <label htmlFor="categories" className="capitalize font-medium cursor-pointer">categorias</label>
                 <select name="categories" id="categories" className="ring-1 rounded-md p-2 outline-none hover:ring-2" value={activity.categories} onChange={handleChange}>
