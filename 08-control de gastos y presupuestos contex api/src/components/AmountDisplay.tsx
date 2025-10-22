@@ -8,7 +8,7 @@ type AmountDisplayProps = {
 const AmountDisplay = ({nombre, cantidad}: AmountDisplayProps) => {
   return (
     <div>
-        <p className="capitalize font-semibold text-xl">{nombre}: <span className="text-blue-700 font-bold">{formatCurrency(cantidad)}</span></p>
+        <p className="capitalize font-bold text-xl">{nombre}: <span className="text-blue-700 font-black underline ">{formatCurrency(cantidad)}</span></p>
     </div>
   )
 }

@@ -4,7 +4,7 @@ const ButgetManager = () => {
   return (
     <div className="shadow-lg shadow-black/50 p-2 ring-1 flex justify-between">
         <div className="w-1/2">
-            <p>imagen</p>
+            <img src="./grafico.jpg" alt="grafica" />
         </div>
 
         <div className="w-1/2 ring-1 justify-center items-center flex flex-col space-y-4">

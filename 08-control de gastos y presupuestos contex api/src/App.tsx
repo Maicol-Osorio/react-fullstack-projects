@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import ButgetManager from "./components/ButgetManager"
 import InitialBudgetForm from "./components/InitialBudgetForm"
 import { useButget } from "./hooks/useButget"
+import ExpenseModal from "./components/ExpenseModal"
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
 
       <div className="w-2/4 p-2 my-4 " >
         {isValid? <InitialBudgetForm /> : <ButgetManager/>}
+
+        {!isValid && (
+          <ExpenseModal/>
+        )}
       </div>
     </div>
   )

@@ -1,0 +1,18 @@
+export type TCategory = {
+    id: string,
+    name: string,
+    icon: string
+}
+
+export type TExpense = {
+    id: string
+    nameExpense: string,
+    amount: number,
+    category: string,
+    expenseDate: Value
+}
+
+export type TDraftExpense = Omit<TExpense, "id">
+
+export type ValuePiece = Date | null;
+export type Value = ValuePiece | [ValuePiece, ValuePiece];
