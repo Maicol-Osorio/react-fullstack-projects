@@ -6,7 +6,7 @@ export type TCategory = {
 
 export type TExpense = {
     id: string
-    nameExpense: string,
+    expense: string,
     amount: number,
     category: string,
     expenseDate: Value

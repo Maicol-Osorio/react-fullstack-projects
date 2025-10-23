@@ -4,17 +4,20 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-date-picker/dist/DatePicker.css';
 import { useState } from "react";
 import type { TDraftExpense, Value } from "../types";
+import Message from "./Message";
 
 
 
 const ExpenseForm = () => {
 
     const [draftExpense, setDraftExpense] = useState<TDraftExpense>({
-        nameExpense: "",
+        expense: "",
         amount: 0,
         category: "",
         expenseDate: new Date
     })
+
+    const [message, setMessage] = useState("")
 
     const handleChangeDate = (value: Value) => {
         setDraftExpense({
@@ -23,23 +26,33 @@ const ExpenseForm = () => {
         })
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target
         const isNumeric = ["amount"].includes(name)
         setDraftExpense({
             ...draftExpense,
-            [name]: isNumeric? value: +value
+            [name]: isNumeric ? +value : value
+
         })
-        
+
     }
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        if(Object.values(draftExpense).includes("")){
+            setMessage("todos los campos son requeridos")
+            return
+        }
+
+        ñ
+    }
     return (
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
             <legend className="text-center capitalize font-extrabold text-xl border-b-2 border-blue-600 ">agregar gasto</legend>
 
             <div className="flex flex-col p-2">
                 <label htmlFor="expense" className="capitalize cursor-pointer pb-2 font-semibold">nombre</label>
-                <input type="text" name="expense" id="expense" className="ring-1 rounded-md p-2" value={draftExpense.nameExpense} onChange={handleChange} />
+                <input type="text" name="expense" id="expense" className="ring-1 rounded-md p-2" value={draftExpense.expense} onChange={handleChange} />
             </div>
 
             <div className="flex flex-col p-2">
@@ -49,7 +62,7 @@ const ExpenseForm = () => {
 
             <div className=" flex flex-col p-2">
                 <label htmlFor="category" className="capitalize cursor-pointer pb-2 font-semibold">categoria</label>
-                <select name="category" id="category" className="ring-1 p-2 cursor-pointer" value={draftExpense.category}>
+                <select name="category" id="category" className="ring-1 p-2 cursor-pointer" value={draftExpense.category} onChange={handleChange}>
                     {categories.map(item => (
                         <option value={item.id} key={item.id}>{item.name}</option>
                     ))}
