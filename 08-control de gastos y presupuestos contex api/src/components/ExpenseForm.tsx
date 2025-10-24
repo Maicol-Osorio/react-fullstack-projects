@@ -5,19 +5,24 @@ import 'react-date-picker/dist/DatePicker.css';
 import { useState } from "react";
 import type { TDraftExpense, Value } from "../types";
 import Message from "./Message";
+import { useButget } from "../hooks/useButget";
 
 
 
 const ExpenseForm = () => {
 
-    const [draftExpense, setDraftExpense] = useState<TDraftExpense>({
+    const draftInitial = {
         expense: "",
         amount: 0,
         category: "",
         expenseDate: new Date
-    })
+    }
+
+    const [draftExpense, setDraftExpense] = useState<TDraftExpense>(draftInitial)
 
     const [message, setMessage] = useState("")
+
+    const { state, dispatch } = useButget()
 
     const handleChangeDate = (value: Value) => {
         setDraftExpense({
@@ -37,19 +42,25 @@ const ExpenseForm = () => {
 
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if(Object.values(draftExpense).includes("")){
+        if (Object.values(draftExpense).includes("")) {
             setMessage("todos los campos son requeridos")
             return
         }
 
-        ñ
+        setMessage("")
+        dispatch({ type: "add-expense", payload: { expense: draftExpense } })
+        setDraftExpense(draftInitial)
+
+
+
     }
     return (
         <form className="space-y-4" onSubmit={handleSubmit}>
             <legend className="text-center capitalize font-extrabold text-xl border-b-2 border-blue-600 ">agregar gasto</legend>
 
+            {message && <Message>{message}</Message>}
             <div className="flex flex-col p-2">
                 <label htmlFor="expense" className="capitalize cursor-pointer pb-2 font-semibold">nombre</label>
                 <input type="text" name="expense" id="expense" className="ring-1 rounded-md p-2" value={draftExpense.expense} onChange={handleChange} />

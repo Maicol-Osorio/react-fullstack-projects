@@ -17,7 +17,7 @@ function App() {
       </header>
 
 
-      <div className="w-2/4 p-2 my-4 " >
+      <div className="w-3/4 p-2 my-4 " >
         {isValid? <InitialBudgetForm /> : <ButgetManager/>}
 
         {!isValid && (
