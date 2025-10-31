@@ -16,7 +16,13 @@ export type butgetState = {
 export const initialState: butgetState = {
     butgetInitial: 0,
     modal: false,
-    expenses: []
+    expenses: [{
+         id: "sdff",
+        expense: "manzana",
+        amount: 125,
+        category: "1",
+        expenseDate: new Date
+    }]
 }
 
 export const butgetReducer = (
@@ -57,7 +63,7 @@ export const butgetReducer = (
         const expense = newExpense(actions.payload.expense)
         return{
             ...state,
-            expenses: {...state.expenses, expense},
+            expenses: [...state.expenses, expense],
             modal: false
         }
     }

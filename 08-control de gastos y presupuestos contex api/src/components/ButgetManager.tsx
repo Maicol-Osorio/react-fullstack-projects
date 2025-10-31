@@ -1,5 +1,6 @@
 import AmountDisplay from "./AmountDisplay"
-import ExpeseDetails from "./ExpeseDetails"
+import ExpeseList from "./ExpeseList"
+import ExpeseDetails from "./ExpeseList"
 
 const ButgetManager = () => {
     return (
@@ -31,7 +32,7 @@ const ButgetManager = () => {
                 </div>
             </div>
 
-            <ExpeseDetails />
+            <ExpeseList />
 
 
         </div>
